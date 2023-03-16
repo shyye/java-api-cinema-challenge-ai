@@ -19,6 +19,8 @@ It's time to use everything you've learned up to this point! Your task is to bui
 
 Pay close attention to the details of each endpoint. How you choose to implement the solution is up to you, there are no wrong answers, but the inputs and outputs must match the provided API documentation exactly.
 
+[You'll find an entity relationship diagram here.](./assets/entity-relationship-diagram.png) Use it to help you design your models.
+
 Example application.yml file:
 
 ```yml
