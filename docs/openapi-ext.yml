@@ -704,15 +704,21 @@ components:
         status:
           type: string
           example: "error"
-        message:
-          type: string
-          example: "bad request"
+        data:
+          type: object
+          properties:
+            message:
+              type: string
+              example: "bad request"
     Error404:
       type: object
       properties:
         status:
           type: string
           example: "error"
-        message:
-          type: string
-          example: "not found"
+        data:
+          type: object
+          properties:
+            message:
+              type: string
+              example: "not found"
