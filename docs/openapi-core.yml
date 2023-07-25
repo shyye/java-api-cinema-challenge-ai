@@ -1,8 +1,10 @@
-openapi: 3.0.3
+openapi: 3.1.0
 info:
-  title: Java Cinema API Challenge - Core Criteria
-  description: |-
-  version: 0.2.2
+  title: Java API Cinema Challenge - Core Criteria
+  description: Core Criteria for the Java Scinema Booking Challenge
+  version: 0.2.3
+  contact:
+    name: Cinema Book Challenge
 
 servers:
   - url: http://localhost:4000
@@ -17,13 +19,15 @@ paths:
         - customers
       summary: Create a customer
       description: Create a new customer account.
+      operationId: createCustomer
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/CreateCustomer'
       responses:
-        201:
+        '201':
+          description: Successfully created a new customer
           content:
             application/json:
               schema:
@@ -33,8 +37,10 @@ paths:
         - customers
       summary: Get all customers
       description: Get a list of every customer.
+      operationId: getCustomers
       responses:
-        200:
+        '200':
+          description: Get a list of all customers
           content:
             application/json:
               schema:
@@ -45,6 +51,7 @@ paths:
         - customers
       summary: Update a customer
       description: Update an existing customer. For ease of implementation, all fields are required from the client.
+      operationId: updateCustomer
       parameters:
         - name: id
           in: path
@@ -58,7 +65,8 @@ paths:
             schema:
               $ref: '#/components/schemas/CreateCustomer'
       responses:
-        201:
+        '201':
+          description: Successfully updated the specified customer
           content:
             application/json:
               schema:
@@ -68,6 +76,7 @@ paths:
         - customers
       summary: Delete a customer
       description: Delete an existing customer. When deleting data, it's useful to send the deleted record back to the client so they can re-create it if deletion was a mistake.
+      operationId: deleteCustomer
       parameters:
         - name: id
           in: path
@@ -76,7 +85,8 @@ paths:
           schema:
             type: integer
       responses:
-        200:
+        '200':
+          description: Successfully deleted the specified customer
           content:
             application/json:
               schema:
@@ -88,13 +98,15 @@ paths:
         - movies
       summary: Create a movie
       description: Create a new movie.
+      operationId: createMovie
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/CreateMovie'
       responses:
-        201:
+        '201':
+          description: Successfully created a new Movie
           content:
             application/json:
               schema:
@@ -104,8 +116,10 @@ paths:
         - movies
       summary: Get all movies
       description: Get a list of every movie.
+      operationId: getMovies
       responses:
-        200:
+        '200':
+          description: Successfully returned a list of all movies
           content:
             application/json:
               schema:
@@ -116,6 +130,7 @@ paths:
         - movies
       summary: Update a movie
       description: Update an existing movie. For ease of implementation, all fields are required from the client.
+      operationId: updateMovie
       parameters:
         - name: id
           in: path
@@ -129,7 +144,8 @@ paths:
             schema:
               $ref: '#/components/schemas/CreateMovie'
       responses:
-        201:
+        '201':
+          description: Successfully updated the specified movie
           content:
             application/json:
               schema:
@@ -139,6 +155,7 @@ paths:
         - movies
       summary: Delete a movie
       description: Delete an existing movie. When deleting data, it's useful to send the deleted record back to the client so they can re-create it if deletion was a mistake.
+      operationId: deleteMovie
       parameters:
         - name: id
           in: path
@@ -147,7 +164,8 @@ paths:
           schema:
             type: integer
       responses:
-        200:
+        '200':
+          description: Successfully deleted the specified movie
           content:
             application/json:
               schema:
@@ -159,6 +177,7 @@ paths:
         - screenings
       summary: Create a screening
       description: Create a screening for an existing movie.
+      operationId: createScreening
       parameters:
         - name: id
           in: path
@@ -172,7 +191,8 @@ paths:
             schema:
               $ref: '#/components/schemas/CreateScreening'
       responses:
-        201:
+        '201':
+          description: Successfully created a screening for the specified movie
           content:
             application/json:
               schema:
@@ -182,6 +202,7 @@ paths:
         - screenings
       summary: Get all screenings
       description: Get a list of every screening for a movie.
+      operationId: getScreenings
       parameters:
         - name: id
           in: path
@@ -190,7 +211,8 @@ paths:
           schema:
             type: integer
       responses:
-        200:
+        '200':
+          description: Successfully returned a list of all screenings of the specified movie
           content:
             application/json:
               schema:
@@ -204,11 +226,10 @@ components:
       properties:
         name:
           type: string
-          example: Chris Wolstenholme
+          example: "Chris Wolstenholme"
         email:
-          type: email
-          format: email
-          example: chris@muse.mu
+          type: string
+          example: "chris@muse.mu"
         phone:
           type: string
           example: "+44729388192"
@@ -220,23 +241,21 @@ components:
           example: 1
         name:
           type: string
-          example: Chris Wolstenholme
+          example: "Chris Wolstenholme"
         email:
           type: string
-          example: chris@muse.mu
+          example: "chris@muse.mu"
         phone:
           type: string
           example: "+44729388192"
         createdAt:
           type: string
           format: DateTime
-          pattern: YYYY-MM-DDTHH:MM:SS
-          example: 2023-03-14T11:01:56.633+00:00
+          example: "2023-03-14T11:01:56.633+00:00"
         updatedAt:
           type: string
           format: DateTime
-          pattern: YYYY-MM-DDTHH:MM:SS
-          example: 2023-03-14T11:01:56.633+00:00
+          example: "2023-03-14T11:01:56.633+00:00"
     AllCustomers:
       type: array
       items:
@@ -248,13 +267,13 @@ components:
       properties:
         title:
           type: string
-          example: Dodgeball
+          example: "Dodgeball"
         rating:
           type: string
-          example: PG-13
+          example: "PG-13"
         description:
           type: string
-          example: The greatest movie ever made.
+          example: "The greatest movie ever made."
         runtimeMins:
           type: integer
           example: 126
@@ -266,26 +285,24 @@ components:
           example: 1
         title:
           type: string
-          example: Dodgeball
+          example: "Dodgeball"
         rating:
           type: string
-          example: PG-13
+          example: "PG-13"
         description:
           type: string
-          example: The greatest movie ever made.
+          example: "The greatest movie ever made."
         runtimeMins:
           type: integer
           example: 126
         createdAt:
           type: string
           format: DateTime
-          pattern: YYYY-MM-DDTHH:MM:SS
-          example: 2023-03-14T11:01:56.633+00:00
+          example: "2023-03-14T11:01:56.633+00:00"
         updatedAt:
           type: string
           format: DateTime
-          pattern: YYYY-MM-DDTHH:MM:SS
-          example: 2023-03-14T11:01:56.633+00:00
+          example: "2023-03-14T11:01:56.633+00:00"
     AllMovies:
       type: array
       items:
@@ -304,8 +321,7 @@ components:
         startsAt:
           type: string
           format: DateTime
-          pattern: YYYY-MM-DD HH:MM:SS
-          example: 2023-03-19 11:30:00
+          example: "2023-03-19 11:30:00+00:00"
     Screening:
       type: object
       properties:
@@ -321,18 +337,15 @@ components:
         startsAt:
           type: string
           format: DateTime
-          pattern: YYYY-MM-DDTHH:MM:SS
-          example: 2023-03-19T11:30:00.000+00:00
+          example: "2023-03-19T11:30:00.000+00:00"
         createdAt:
           type: string
           format: DateTime
-          pattern: YYYY-MM-DDTHH:MM:SS
-          example: 2023-03-14T11:01:56.633+00:00
+          example: "2023-03-14T11:01:56.633+00:00"
         updatedAt:
           type: string
           format: DateTime
-          pattern: YYYY-MM-DDTHH:MM:SS
-          example: 2023-03-14T11:01:56.633+00:00
+          example: "2023-03-14T11:01:56.633+00:00"
     AllScreenings:
       type: array
       items:
