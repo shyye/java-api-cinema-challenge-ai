@@ -34,14 +34,14 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://tfke.db.elephantsql.com/dkshfirn
-    username: dkshfirn
+    url: jdbc:postgresql://tfke.db.elephantsql.com:5432/neondb
+    username: neondb_user
     password: PFif40fj-eb6btfiF*k3nfEobyGaH
     max-active: 3
     max-idle: 3
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
