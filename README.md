@@ -1,4 +1,9 @@
-# Cinema Booking API Challenge
+# Cinema Booking API Challenge - NOTE: This is a copy from boolean-uk, for the Copilot Exercise.
+
+Copilot Exercise: https://github.com/shyye/ai-day-2  
+Original fork for this repo: https://github.com/shyye/java-api-cinema-challenge
+
+---
 
 ## Learning Objectives
 - Use Spring Boot, Spring Data JPA and Hibernate to build a RESTful API
